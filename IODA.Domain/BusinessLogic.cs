@@ -4,32 +4,32 @@ namespace IODA.Domain;
 
 public static class BusinessLogic
 {
-    public static List<string> GetAllUsers(UserCounts userCounts)
+    public static List<string> GetAllVisitors(VisitorCounts visitorCounts)
     {
         // Integration
-        return userCounts.AllUsers();
+        return visitorCounts.AllVisitors();
     }
 
-    public static string GetGreetingMessage(UserCounts userCounts, string name)
+    public static string GetGreetingMessage(VisitorCounts visitorCounts, string name)
     {
         // Integration
-        if (!userCounts.Exists(name))
+        if (!visitorCounts.Exists(name))
         {
-            userCounts.Add(name);
+            visitorCounts.Add(name);
             return GetGreetingMessage(0, name);
         }
         else
         {
-            userCounts.Increase(name);
-            int count = userCounts.Count(name);
+            visitorCounts.Increase(name);
+            int count = visitorCounts.Count(name);
             return GetGreetingMessage(count, name);
         }
     }
 
-    public static void RemoveUsersWithMoreThan(UserCounts userCounts, int visits)
+    public static void RemoveVistorsWithMoreThan(VisitorCounts visitorCounts, int visits)
     {
         // Integration
-        userCounts.RemoveUsersWithMoreThan(visits);
+        visitorCounts.RemoveVisitorsWithMoreThan(visits);
     }
 
     internal static string GetGreetingMessage(int count, string name)

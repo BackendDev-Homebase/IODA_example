@@ -4,20 +4,20 @@ namespace IODA.Adapters.Providers;
 
 public class DataAccess
 {
-    private readonly string _path = Path.Combine(Environment.CurrentDirectory, "../IOADA.Aapters.Providers/usercounts.txt");
+    private readonly string _path = Path.Combine(Environment.CurrentDirectory, "../IOADA.Aapters.Providers/visitorcounts.txt");
 
-    public async Task<UserCounts> Load()
+    public async Task<VisitorCounts> Load()
     {
         // Integration
         var lines = await File.ReadAllLinesAsync(_path);
-        var userCounts = UserCounts.Create(lines);
-        return userCounts;
+        var visitorCounts = VisitorCounts.Create(lines);
+        return visitorCounts;
     }
 
-    public async Task Store(UserCounts userCounts)
+    public async Task Store(VisitorCounts visitorCounts)
     {
         // Integration
-        var lines = userCounts.ToLines();
+        var lines = visitorCounts.ToLines();
         await File.WriteAllLinesAsync(_path, lines);
     }
 }

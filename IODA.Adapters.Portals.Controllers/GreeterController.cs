@@ -18,11 +18,11 @@ namespace IODA.Adapters.Portal.Controllers
         public async Task<string> GetGreetingMessage(string name)
         {
             // Integration
-            var userCounts = await _da.Load();
+            var visitorCounts = await _da.Load();
 
-            var message = BusinessLogic.GetGreetingMessage(userCounts, name);
+            var message = BusinessLogic.GetGreetingMessage(visitorCounts, name);
 
-            await _da.Store(userCounts);
+            await _da.Store(visitorCounts);
 
             return message;
         }
@@ -31,21 +31,21 @@ namespace IODA.Adapters.Portal.Controllers
         public async Task<ActionResult<List<string>>> GetAllNames()
         {
             // Integration
-            var userCounts = await _da.Load();
+            var visitorCounts = await _da.Load();
 
-            var users = BusinessLogic.GetAllUsers(userCounts!);
-            return await Task.FromResult(users);
+            var visitors = BusinessLogic.GetAllVisitors(visitorCounts!);
+            return await Task.FromResult(visitors);
         }
 
         [HttpDelete("api/DeleteWithMoreThan/{visits}")]
         public async Task DeleteWithMoreThan(int visits)
         {
             // Integration
-            var userCounts = await _da.Load();
+            var visitorCounts = await _da.Load();
 
-            BusinessLogic.RemoveUsersWithMoreThan(userCounts, visits);
+            BusinessLogic.RemoveVistorsWithMoreThan(visitorCounts, visits);
 
-            await _da.Store(userCounts);
+            await _da.Store(visitorCounts);
         }
     }
 }
