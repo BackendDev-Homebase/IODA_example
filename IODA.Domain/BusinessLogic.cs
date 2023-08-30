@@ -13,7 +13,7 @@ public static class BusinessLogic
     public static string GetGreetingMessage(UserCounts userCounts, string name)
     {
         // Integration
-        if (!userCounts.ExistsUser(name))
+        if (!userCounts.Exists(name))
         {
             userCounts.Add(name);
             return GetGreetingMessage(0, name);
@@ -21,7 +21,7 @@ public static class BusinessLogic
         else
         {
             userCounts.Increase(name);
-            int count = userCounts.GetCount(name);
+            int count = userCounts.Count(name);
             return GetGreetingMessage(count, name);
         }
     }
@@ -32,7 +32,7 @@ public static class BusinessLogic
         userCounts.RemoveUsersWithMoreThan(visits);
     }
 
-    private static string GetGreetingMessage(int count, string name)
+    internal static string GetGreetingMessage(int count, string name)
     {
         // Operation
         return count switch

@@ -27,13 +27,13 @@ public class UserCounts
             .ToArray();
     }
 
-    public bool ExistsUser(string user)
+    public bool Exists(string user)
     {
         // Operation
         return _userCounts.ContainsKey(user);
     }
 
-    public int GetCount(string user)
+    public int Count(string user)
     {
         // Operation
         return _userCounts[user];
