@@ -1,0 +1,17 @@
+﻿// https://learn.microsoft.com/en-us/aspnet/core/test/http-files?view=aspnetcore-8.0
+
+@Controllers_HostAddress = https://localhost:7138
+
+GET {{Controllers_HostAddress}}/api/GetGreetingMessage/Dieter
+
+###
+
+GET {{Controllers_HostAddress}}/api/GetGreetingMessage/Edzus
+
+###
+
+DELETE {{Controllers_HostAddress}}/api/DeleteWithMoreThan/1
+
+###
+
+GET {{Controllers_HostAddress}}/api/GetAllNames
